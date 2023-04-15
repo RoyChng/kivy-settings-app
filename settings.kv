@@ -1,0 +1,306 @@
+#:import utils kivy.utils
+
+<SettingsLayout>:
+    orientation: "vertical"
+
+    AccordionItem:
+        title: "Display Settings"
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: 0.8
+
+            BoxLayout:
+                orientation: "horizontal"
+
+                BoxLayout:
+                    orientation: "vertical"
+                    padding: 30
+
+                    Label:
+                        text: "Screen Resolution"
+                        text_size: (self.width, None)
+                        halign: "left"
+                        font_size: 30
+                        bold: True
+
+                    AnchorLayout:
+                        anchor_y: "top"
+                        anchor_x: "left"
+                        GridLayout:
+                            cols: 2
+                            size_hint_y: 0.5
+
+                            Label:
+                                text: "1920x1080 (1080p)"
+                                text_size: (self.width, None)
+                                halign: "left"
+                            CheckBox:
+                                group: "screen_resolution"
+                                active: True
+                                on_active: root.checkbox_handler(self, self.active, "1080p")
+
+                            Label:
+                                text: "1280x720 (720p)"
+                                text_size: (self.width, None)
+                                halign: "left"
+                            CheckBox:
+                                group: "screen_resolution"
+                                on_active: root.checkbox_handler(self, self.active, "720p")
+
+                            Label:
+                                text: "720x480 (480p)"
+                                text_size: (self.width, None)
+                                halign: "left"
+                            CheckBox:
+                                group: "screen_resolution"
+                                on_active: root.checkbox_handler(self, self.active, "480p")
+
+                Image:
+                    source: "extra_imgs/1080p.png"
+                    id: screen_resolution_img
+
+            BoxLayout:
+                orientation: "horizontal"
+                size_hint_y: 0.2
+                size_hint_x: 0.5
+                padding: 10
+
+                Button:
+                    text: "Save"
+                    background_color: 0,0,1,1
+
+                Button:
+                    text:"Cancel"
+                    background_color: 1,0,0,1
+            
+
+    AccordionItem:
+        title: "Account Settings"
+
+        BoxLayout:
+            orientation: "horizontal"
+
+            BoxLayout:
+                orientation: "vertical"
+                padding: 30
+                spacing: 20
+                
+                Label:
+                    text: "Edit Account Settings" 
+                    text_size: (self.width, None)
+                    halign: "left"
+                    font_size: 30
+                    size_hint_y: 0.3
+                    bold: True
+
+                AnchorLayout:
+                    anchor_y: "top"
+                    anchor_x: "left"
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        spacing: 40
+
+                        GridLayout:
+                            cols: 2
+
+                            Label:
+                                text: "Name"
+                                text_size: (self.width, None)
+                                halign: "left"
+                            
+                            TextInput:
+                                multiline: False
+                                size_hint_y: None
+                                height: 30   
+
+                            Label:
+                                text: "Password"
+                                text_size: (self.width, None)
+                                halign: "left"
+                            
+                            TextInput:
+                                multiline: False 
+                                password: True 
+                                size_hint_y: None
+                                height: 30  
+
+                            Label:
+                                text: "Email"
+                                text_size: (self.width, None)
+                                halign: "left"
+                            
+                            TextInput:
+                                multiline: False 
+                                size_hint_y: None
+                                height: 30  
+                            
+                        AnchorLayout:
+                            anchor_y: "top"
+                            anchor_x: "left"
+                            BoxLayout:
+                                orientation: "horizontal"
+                                #size_hint_y: 0.3
+
+                                Label:
+                                    text: "Subscription Type: "
+                                    font_size: 16
+                                    bold: True
+                                    text_size: (self.width, None)
+                                    halign: "left"
+
+                                BoxLayout:
+                                    orientation: "horizontal"
+
+                                    Label:
+                                        text: "Basic"
+
+                                    CheckBox:
+                                        group: "subscription_type"
+
+                                    Label:
+                                        text: "Pro"
+
+                                    CheckBox:
+                                        group: "subscription_type"
+                                        active: True
+
+                Label:
+                    text: "Edit Notification Settings" 
+                    text_size: (self.width, None)
+                    halign: "left"
+                    font_size: 30
+                    size_hint_y: 0.3
+                    bold: True
+
+                AnchorLayout:
+                    anchor_y: "top"
+                    anchor_x: "left"
+
+                    GridLayout:
+                        cols: 2
+                        size_hint_y: 0.3
+
+                        Label:
+                            text: "Message Notifications"
+                            text_size: (self.width, None)
+                            halign: "left"
+
+                        AnchorLayout:
+                            anchor_x: "right"
+                            CheckBox:
+                                size_hint_x: None
+                                width: 30
+                                active: True
+
+                        Label:
+                            text: "Update Notifications"
+                            text_size: (self.width, None)
+                            halign: "left"
+
+                        AnchorLayout:
+                            anchor_x: "right"
+                            CheckBox:
+                                size_hint_x: None
+                                width: 30
+                                active: True
+
+
+            BoxLayout:
+                orientation: "vertical"
+                padding: 30
+                spacing: 20
+
+                Label:
+                    text: "Profile Picture"
+                    text_size: (self.width, None)
+                    halign: "left"
+                    font_size: 30
+                    size_hint_y: 0.4
+                    bold: True
+
+                AnchorLayout:
+                    anchor_y: "top"
+                    anchor_x: "left"
+
+                    BoxLayout:
+                        orientation: "horizontal"
+                        size_hint_y: 0.6
+
+                        Image:
+                            source: "extra_imgs/profile_pic.png"
+
+                        Button:
+                            size_hint_y: 0.5
+                            text: "Change Image"
+                            pos_hint: {"center_y": 0.5}
+
+                AnchorLayout:
+                    anchor_y: "bottom"
+                    anchor_x: "right"
+
+                    BoxLayout:
+                        orientation: "horizontal"
+                        size_hint_y: 0.4
+                        padding: 10
+
+                        Button:
+                            text: "Save"
+                            background_color: 0,0,1,1
+
+                        Button:
+                            text:"Cancel"
+                            background_color: 1,0,0,1                
+
+
+    AccordionItem:
+        title: "About App"
+
+        GridLayout:
+            cols: 2
+            padding: 20
+            size_hint_y: 0.5
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            BoxLayout:
+                orientation: "vertical"
+
+                Image:
+                    source: "extra_imgs/kivy_logo.png"
+
+                Label:
+                    text: "V1.0.0"
+                    bold: True
+                    italic: True
+                    font_size: 24
+
+            GridLayout:
+                cols: 2
+                height: self.minimum_height
+
+                Label:
+                    text: "Title:"
+                    bold: True
+                    text_size: self.width, None
+                    halign: "left"
+                    font_size: 24
+                    
+                Label:
+                    text: "Example settings App"
+                    text_size: self.width, None
+                    halign: "left"
+                    font_size: 20
+
+                Label:
+                    text: "Description:"
+                    bold: True
+                    text_size: self.width, None
+                    halign: "left"
+                    font_size: 24
+
+                Label:
+                    text: "An example application to showcase Kivy For YT"
+                    text_size: self.width, None
+                    halign: "left"
+                    font_size: 20
